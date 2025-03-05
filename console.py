@@ -16,15 +16,19 @@ class console_manner:
         self.db = JsonData(str(init_db))
         self.console_main()
     def console_main(self):
-        print("___控制面板___")
-        print("1.执行JDB语句\n"
-              "2.加密功能(Beta)\n"
-              "e.退出面板")
-        print("_____________")
-        input_code = input("选项:")
-        if str(input_code) in self.console_per:
-            self.console_per[str(input_code)]()
-        else:
-            self.system_method.clean_screen()
-            print("请输入正确的选项")
-            self.console_main()
+        while True:
+            print("___控制面板___")
+            print("1.执行JDB语句\n"
+                  "2.加密功能(Beta)\n"
+                  "e.退出面板")
+            print("_____________")
+            input_code = input("选项:")
+
+            if input_code in self.console_per:
+                self.console_per[input_code]()
+            elif input_code.lower() == "e":
+                print("退出面板")
+                break  # 退出循环
+            else:
+                self.system_method.clean_screen()  # （清屏）
+                print("请输入正确的选项")
