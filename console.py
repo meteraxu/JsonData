@@ -5,12 +5,15 @@ from core import system_method
 class console_action:
     def choice_first(self):
         print("First Doing")
+    def choice_second(self):
+        print("Second doing")
 
 class console_manner:
     def __init__(self):
         self.system_method = system_method()
         self.console_carry = console_action()
-        self.console_per = {"1": lambda: self.console_carry.choice_first()}
+        self.console_per = {"1": lambda: self.console_carry.choice_first(),
+                            "2": lambda: print("正在Coding中，请关注研发进程")}
         print("欢迎使用JsonData(Delta-developed) Console!")
         init_db = input("请输入要加载的数据库文件:")
         self.db = JsonData(str(init_db))
